@@ -24,6 +24,7 @@ public class Main {
         customer.setRentals(rentals);
         System.out.println("#####################");
         System.out.println(customer.statement());
+        System.out.println(customer.htmlStatement());
         System.out.println("#####################");
 
         long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
