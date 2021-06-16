@@ -14,4 +14,29 @@ public class Rental {
     public int getDayRented() {
         return dayRented;
     }
+
+    public double getCharge() {
+        double result = 0;
+        switch (getMovie().getPriceCode()){
+            case Movie.REGULAR: // 고전작일경우
+                result += 2; // 누적대여료 +2
+                if(getDayRented() > 2){ // 대여일수가 3일 이상일때
+                    // 추가대여일수에 대한 누적 대여료 계산
+                    result += (getDayRented() - 2) * 1.5;
+                }
+                break;
+            case Movie.NEW_RELEASE: // 신작일 경우
+                // 누적 대여로 일당 3
+                result += getDayRented() * 3;
+                break;
+            case Movie.CHILDRENS: // 아동작일 경우
+                result += 1.5; // 누적 대여로 +1.5
+                if(getDayRented() > 3){// 대여일수가 4일 이상일때
+                    // 추가대여일수에 대한 누적 대여료 계산
+                    result += (getDayRented() - 3) * 1.5;
+                }
+                break;
+        }
+        return result;
+    }
 }
