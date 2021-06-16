@@ -39,4 +39,16 @@ public class Rental {
         }
         return result;
     }
+
+    /**
+     * 최신물 대여시 추가 적릭급 지급
+     * @return
+     */
+    public int getFrequentRenterPoints() {
+        // 최신물을 이틀 이상 대여하면 보너스 포인트 지급
+        if((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDayRented() > 1){
+            return 2;
+        }
+        return 1;
+    }
 }
